@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"log"
 	"net/http"
@@ -33,12 +34,15 @@ var stopDepth int = 3
 var stopCount int = 100
 var outputFile bool = true
 var outputFileName string = "result.txt"
+var logDocument bool = false
 
 func main() {
 
     prop := properties.MustLoadFile(propFileName, properties.UTF8)
 
+    startMethod := prop.MustGetString("start-method")
     startUrl := prop.MustGetString("start-url")
+    startFile := prop.MustGetString("start-file")
     checkstopDepth = prop.MustGetBool("check-stop-by-depth")
     checkstopCount = prop.MustGetBool("check-stop-by-count")
     stopDepth = prop.MustGetInt("stop-depth")
@@ -50,11 +54,28 @@ func main() {
     outputFile = prop.MustGetBool("output-to-file")
     outputFileName = prop.MustGetString("output-file-name")
 
-    // 預先準備要抓的 query string
+    logDocument = prop.MustGetBool("log-document")
+
+        // 預先準備要抓的 query string
     prepareQueryConditions(prop);
 
     // start crawler
-    crawl(startUrl, 0)
+    if strings.ToLower(startMethod) == "url" {
+        // start from one url
+        crawl(startUrl, 0)
+    } else if strings.ToLower(startMethod) == "file" {
+        // open file to get all urls
+        file, err := os.Open(startFile)
+        if err != nil {
+            log.Fatalf("[ERROR] Error in open URL file: %s", err)
+        }
+        fileScanner := bufio.NewScanner(file)
+        for fileScanner.Scan() { crawl(fileScanner.Text(), 0) }
+        if err := fileScanner.Err(); err != nil {
+            log.Fatalf("[ERROR] Error in read URL file: %s", err)
+        }
+        file.Close()
+    }
 }
 
 func crawl(url string, depth int) {
@@ -68,6 +89,9 @@ func crawl(url string, depth int) {
         return
     }
     fetchCount = fetchCount + 1
+
+    // show all document for debug
+    if logDocument { log.Println(doc.Html()) }
 
     // Find target DOM items
     for _, thisQry := range queryConditions {
