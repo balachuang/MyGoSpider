@@ -1,3 +1,10 @@
+-- Basic Go command
+
+go get --> get go package
+go run xxx.go --> run go code
+go install xxx --> build go exe
+
+
 -- Colly:
 https://segmentfault.com/a/1190000023808304
 https://pkg.go.dev/github.com/gocolly/colly/v2
