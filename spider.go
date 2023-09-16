@@ -56,7 +56,7 @@ func main() {
 
     logDocument = prop.MustGetBool("log-document")
 
-        // 預先準備要抓的 query string
+    // 預先準備要抓的 query string
     prepareQueryConditions(prop);
 
     // start crawler
