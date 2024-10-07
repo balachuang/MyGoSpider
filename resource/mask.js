@@ -1,12 +1,18 @@
 javascript:(function() {
-	var _temp_mask_ = document.createElement("div");
-	_temp_mask_.style.backgroundColor = 'rgba(0,0,0,0.5)';
-	_temp_mask_.style.pointerEvents = 'none';
-	_temp_mask_.style.width = '10000px';
-	_temp_mask_.style.height = '10000px';
-	_temp_mask_.style.position = 'fixed';
-	_temp_mask_.style.left = '-10px';
-	_temp_mask_.style.top = '-10px';
-	_temp_mask_.style.zIndex = '10000';
-	document.getElementsByTagName('body')[0].appendChild(_temp_mask_);
+	var __tl__ = document.getElementById('__temp_light__');
+	if (__tl__) {
+		__tl__.remove();
+	}else{
+		var __tl__ = document.createElement('div');
+		__tl__.id = '__temp_light__';
+		__tl__.style.backgroundColor = 'rgba(0,0,0,0.5)';
+		__tl__.style.pointerEvents = 'none';
+		__tl__.style.width = '10000px';
+		__tl__.style.height = '10000px';
+		__tl__.style.position = 'fixed';
+		__tl__.style.left = '-10px';
+		__tl__.style.top = '-10px';
+		__tl__.style.zIndex = '10000';
+		document.getElementsByTagName('body')[0].appendChild(__tl__);
+	}
 })()
