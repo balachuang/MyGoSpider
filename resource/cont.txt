@@ -1,0 +1,27 @@
+Hi, jj. 
+
+有件事要請你幫忙, 我之前有開 ITSR 單要進行 NAS migration. 目前已經完成資料搬移, 要進行最後的 NAS 切換. 
+原本 NAS 切換是請 VM Sponsor 幫忙, 我這裡會在換之切後確認 AP 是否可以正常讀取檔案即可.
+不過因為 VM Sponsor 說他們被 ITS 提醒原本的 change 流程有問題, 所以現在都一樣要經過 review.
+
+我是在上週完成資料搬移, 因此請 VM Sponsor 今天幫忙做 NAS 切換. 
+由於 VM sponsor 也不確定這是不是算 urgent change, 所以他會先跟老闆確認. 
+我這裡已經先在我們的 Azure 上開立把 urgent change 單了.
+如果算是 urgent change 的話, 我會再正式寄 mail 出來, 請 jj 幫忙給我一個同意信, 謝謝.
+
+
+Dear jj,
+
+如 Teams 所說, 之前由於 NAS EOS, 我這裡有開單進行 NAS migration,
+上週已完成 NAS 資料搬移, 今天要請 ICSD 同仁協助進行 NAS switch urgent change.
+我這裡也已2經同步開出兩張 urgent change 單, 再請 jj 同意我們進行這項作業, 謝謝.
+
+要作業的內容如下:
+
+NAS 1:
+...
+單號: 
+
+NAS 2:
+...
+單號: 
